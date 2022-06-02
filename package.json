@@ -1,0 +1,19 @@
+{
+  "name": "scraping",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cheerio": "^1.0.0-rc.11",
+    "csv": "^6.1.0",
+    "csv-stringify": "^6.1.0",
+    "express": "^4.18.1",
+    "iconv-lite": "^0.6.3"
+  }
+}
