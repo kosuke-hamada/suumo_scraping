@@ -28,17 +28,12 @@ axios(chiba_ms_URL)
 
     $(".searchtable", htmlParser).each(function () { 
       const chiba_itemlist = $(this).find(".searchitem-list-value").text();
-      chiba_ms.push({chiba_itemlist});
-      const json_chiba_ms = JSON.stringify(chiba_ms);
-        console.log(json_chiba_ms);
+      chiba_ms.push(chiba_itemlist);
+      console.log("-----------千葉中古マンション--------------")
+      const json_chiba_ms = JSON.stringify(chiba_ms).replace(/\(/g, ',"').replace(/\)/g, '"').replace('"','').slice(2).slice(0,-2);
+        console.log('['+json_chiba_ms+']');
     });
   })
-
-  //const chiba_list = document.getElementsByClassName('searchitem-list-value').length;
-
-
-  /*同じ*/
-
 
   axios(chiba_chukoikkodate_URL)
   .then((response) => {
@@ -48,10 +43,10 @@ axios(chiba_ms_URL)
 
     $(".searchtable", htmlParser).each(function () {
         const chiba_itemlist = $(this).find(".searchitem-list-value").text();
-        chiba_chukoikkodate.push({chiba_itemlist});
-        const json_chiba_chukoikkodate = JSON.stringify(chiba_chukoikkodate);
-        console.log("千葉の中古一戸建て")
-        console.log(json_chiba_chukoikkodate);
+        chiba_chukoikkodate.push(chiba_itemlist);
+        console.log("-----------千葉中古戸建て--------------")
+        const json_chiba_chukoikkodate = JSON.stringify(chiba_chukoikkodate).replace(/\(/g, ',"').replace(/\)/g, '"').replace('"','').slice(2).slice(0,-2);
+        console.log('['+json_chiba_chukoikkodate+']');
     });
   })
 
@@ -63,10 +58,10 @@ axios(chiba_ms_URL)
 
     $(".searchtable", htmlParser).each(function () {
       const chiba_itemlist = $(this).find(".searchitem-list-value").text();
-      chiba_tochi.push({chiba_itemlist});
-      const json_chiba_tochi = JSON.stringify(chiba_tochi);
-      console.log("千葉の土地");
-      console.log(json_chiba_tochi);
+      chiba_tochi.push(chiba_itemlist);
+      console.log("-----------千葉土地--------------")
+      const json_chiba_tochi = JSON.stringify(chiba_tochi).replace(/\(/g, ',"').replace(/\)/g, '"').replace('"','').slice(2).slice(0,-2);
+      console.log('['+json_chiba_tochi+']');
     });
   })
 
@@ -79,11 +74,9 @@ axios(chiba_ms_URL)
     $(".searchtable", htmlParser).each(function () {
       const chiba_itemlist = $(this).find(".searchitem-list-value").text();
       chiba_ikkodate.push(chiba_itemlist);
-      const json_chiba_ikkodate = JSON.stringify(chiba_ikkodate);
-      console.log("千葉の新築一戸建て");
-
-      const rep = json_chiba_ikkodate.replace(/\(/g, '"').replace(/\)/g, '",').replace('"','').replace('",','')
-      console.log(rep);
+      console.log("-----------千葉新築戸建て--------------")
+      const json_chiba_ikkodate = JSON.stringify(chiba_ikkodate).replace(/\(/g, ',"').replace(/\)/g, '"').replace('"','').slice(2).slice(0,-2);
+      console.log('['+json_chiba_ikkodate+']');
     });
   })
 
