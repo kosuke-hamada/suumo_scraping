@@ -10,15 +10,11 @@ const app = express();
 app.listen(PORT, () => console.log("running"));
 
 
-// 千葉の物件情報
+console.log("\n--------------\n\n千葉の物件情報\n\n--------------\n")
 const chiba_ms_URL = "https://suumo.jp/ms/chuko/chiba/city/";
 const chiba_chukoikkodate_URL = "https://suumo.jp/chukoikkodate/chiba/city/";
 const chiba_ikkodate_URL = "https://suumo.jp/ikkodate/chiba/city/";
 const chiba_tochi_URL = "https://suumo.jp/tochi/chiba/city/";
-const chiba_ms = [];
-const chiba_chukoikkodate = [];
-const chiba_ikkodate = [];
-const chiba_tochi = [];
 
 axios(chiba_ms_URL)
   .then((response) => {
@@ -30,7 +26,7 @@ axios(chiba_ms_URL)
       //const list_count = $(this).find(".searchitem-list-value").length;
 
       const chiba_itemlist = $(this).find(".searchitem-list-value").text().replace(/\)/g ,'').replace(/\(/g ,',').slice(1);
-      console.log("-----------千葉中古マンション--------------")
+      console.log("\n-----------千葉中古マンション--------------\n")
   
       var a = chiba_itemlist.split(',')
       var json_list = JSON.stringify(a)
@@ -46,8 +42,7 @@ axios(chiba_ms_URL)
 
     $(".searchtable", htmlParser).each(function () {
         const chiba_itemlist = $(this).find(".searchitem-list-value").text().replace(/\)/g ,'').replace(/\(/g ,',').slice(1);
-        chiba_chukoikkodate.push(chiba_itemlist);
-        console.log("-----------千葉中古戸建て--------------")
+        console.log("\n-----------千葉中古戸建て--------------\n")
         var a = chiba_itemlist.split(',')
         var json_list = JSON.stringify(a)
         console.log(json_list)
@@ -62,7 +57,7 @@ axios(chiba_ms_URL)
 
     $(".searchtable", htmlParser).each(function () {
       const chiba_itemlist = $(this).find(".searchitem-list-value").text().replace(/\)/g ,'').replace(/\(/g ,',').slice(1);
-      console.log("-----------千葉土地--------------")
+      console.log("\n-----------千葉土地--------------\n")
       var a = chiba_itemlist.split(',')
       var json_list = JSON.stringify(a)
       console.log(json_list)
@@ -77,12 +72,88 @@ axios(chiba_ms_URL)
 
     $(".searchtable", htmlParser).each(function () {
       const chiba_itemlist = $(this).find(".searchitem-list-value").text().replace(/\)/g ,'').replace(/\(/g ,',').slice(1);
-      console.log("-----------千葉新築戸建て--------------")
+      console.log("\n-----------千葉新築戸建て--------------\n")
       var a = chiba_itemlist.split(',')
       var json_list = JSON.stringify(a)
       console.log(json_list)
     });
   })
 
+  function aichi(){
+  console.log("\n--------------\n\n愛知の物件情報\n\n--------------\n")
 
-  .catch((error) => console.log(error));
+  // 愛知の物件情報
+  const aichi_ms_URL = "https://suumo.jp/ms/chuko/aichi/city/";
+  const aichi_chukoikkodate_URL = "https://suumo.jp/chukoikkodate/aichi/city/";
+  const aichi_ikkodate_URL = "https://suumo.jp/ikkodate/aichi/city/";
+  const aichi_tochi_URL = "https://suumo.jp/tochi/aichi/city/";
+  
+  axios(aichi_ms_URL)
+  .then((response) => {
+    const htmlParser = response.data;
+    // console.log(htmlParser);
+    const $ = cheerio.load(htmlParser);
+
+    $(".searchtable", htmlParser).each(function () { 
+      //const list_count = $(this).find(".searchitem-list-value").length;
+
+      const aichi_itemlist = $(this).find(".searchitem-list-value").text().replace(/\)/g ,'').replace(/\(/g ,',').slice(1);
+      console.log("\n-----------愛知中古マンション--------------\n")
+  
+      var a = aichi_itemlist.split(',')
+      var json_list = JSON.stringify(a)
+      console.log(json_list)
+    });
+  })
+
+  axios(aichi_chukoikkodate_URL)
+  .then((response) => {
+    const htmlParser = response.data;
+    // console.log(htmlParser);
+    const $ = cheerio.load(htmlParser);
+
+    $(".searchtable", htmlParser).each(function () {
+        const aichi_itemlist = $(this).find(".searchitem-list-value").text().replace(/\)/g ,'').replace(/\(/g ,',').slice(1);
+        console.log("\n-----------愛知中古戸建て--------------\n")
+        var a = aichi_itemlist.split(',')
+        var json_list = JSON.stringify(a)
+        console.log(json_list)
+    });
+  })
+
+  axios(aichi_tochi_URL)
+  .then((response) => {
+    const htmlParser = response.data;
+    // console.log(htmlParser);
+    const $ = cheerio.load(htmlParser);
+
+    $(".searchtable", htmlParser).each(function () {
+      const aichi_itemlist = $(this).find(".searchitem-list-value").text().replace(/\)/g ,'').replace(/\(/g ,',').slice(1);
+      console.log("\n-----------愛知土地--------------\n")
+      var a = aichi_itemlist.split(',')
+      var json_list = JSON.stringify(a)
+      console.log(json_list)
+    });
+  })
+
+  axios(aichi_ikkodate_URL)
+  .then((response) => {
+    const htmlParser = response.data;
+    // console.log(htmlParser);
+    const $ = cheerio.load(htmlParser);
+
+    $(".searchtable", htmlParser).each(function () {
+      const aichi_itemlist = $(this).find(".searchitem-list-value").text().replace(/\)/g ,'').replace(/\(/g ,',').slice(1);
+      console.log("\n-----------愛知新築戸建て--------------/n")
+      var a = aichi_itemlist.split(',')
+      var json_list = JSON.stringify(a)
+      console.log(json_list)
+    });
+  })
+}
+
+setTimeout(() => {
+  aichi()
+}, 2000);
+
+//.catch((error) => console.log(error));
