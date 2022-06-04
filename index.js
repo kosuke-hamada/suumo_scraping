@@ -233,4 +233,82 @@ setTimeout(() => {
   fukuoka()
 }, 3000);
 
+
+function shizuoka() {
+  console.log("\n--------------\n\n静岡の物件情報\n\n--------------\n")
+
+  // 愛知の物件情報
+  const shizuoka_ms_URL = "https://suumo.jp/ms/chuko/shizuoka/city/";
+  const shizuoka_chukoikkodate_URL = "https://suumo.jp/chukoikkodate/shizuoka/city/";
+  const shizuoka_ikkodate_URL = "https://suumo.jp/ikkodate/shizuoka/city/";
+  const shizuoka_tochi_URL = "https://suumo.jp/tochi/shizuoka/city/";
+  
+  axios(shizuoka_ms_URL)
+  .then((response) => {
+    const htmlParser = response.data;
+    // console.log(htmlParser);
+    const $ = cheerio.load(htmlParser);
+
+    $(".searchtable", htmlParser).each(function () { 
+      //const list_count = $(this).find(".searchitem-list-value").length;
+
+      const shizuoka_itemlist = $(this).find(".searchitem-list-value").text().replace(/\)/g ,'').replace(/\(/g ,',').slice(1);
+      console.log("\n-----------静岡中古マンション--------------\n")
+  
+      var a = shizuoka_itemlist.split(',')
+      var json_list = JSON.stringify(a)
+      console.log(json_list)
+    });
+  })
+
+  axios(shizuoka_chukoikkodate_URL)
+  .then((response) => {
+    const htmlParser = response.data;
+    // console.log(htmlParser);
+    const $ = cheerio.load(htmlParser);
+
+    $(".searchtable", htmlParser).each(function () {
+        const shizuoka_itemlist = $(this).find(".searchitem-list-value").text().replace(/\)/g ,'').replace(/\(/g ,',').slice(1);
+        console.log("\n-----------静岡中古戸建て--------------\n")
+        var a = shizuoka_itemlist.split(',')
+        var json_list = JSON.stringify(a)
+        console.log(json_list)
+    });
+  })
+
+  axios(shizuoka_tochi_URL)
+  .then((response) => {
+    const htmlParser = response.data;
+    // console.log(htmlParser);
+    const $ = cheerio.load(htmlParser);
+
+    $(".searchtable", htmlParser).each(function () {
+      const shizuoka_itemlist = $(this).find(".searchitem-list-value").text().replace(/\)/g ,'').replace(/\(/g ,',').slice(1);
+      console.log("\n-----------静岡土地--------------\n")
+      var a = shizuoka_itemlist.split(',')
+      var json_list = JSON.stringify(a)
+      console.log(json_list)
+    });
+  })
+
+  axios(shizuoka_ikkodate_URL)
+  .then((response) => {
+    const htmlParser = response.data;
+    // console.log(htmlParser);
+    const $ = cheerio.load(htmlParser);
+
+    $(".searchtable", htmlParser).each(function () {
+      const shizuoka_itemlist = $(this).find(".searchitem-list-value").text().replace(/\)/g ,'').replace(/\(/g ,',').slice(1);
+      console.log("\n-----------静岡新築戸建て--------------\n")
+      var a = shizuoka_itemlist.split(',')
+      var json_list = JSON.stringify(a)
+      console.log(json_list)
+    });
+  })
+}
+
+setTimeout(() => {
+  shizuoka()
+}, 3500);
+
 //.catch((error) => console.log(error));
