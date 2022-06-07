@@ -163,7 +163,7 @@ aichi()
 
 setTimeout(() => {
   aichi_settime()
-}, 2000);
+}, 2500);
 
 function fukuoka_settime(){
   console.log("\n--------------\n\n福岡の物件情報\n\n--------------\n")
@@ -244,7 +244,7 @@ fukuoka()
 
 setTimeout(() => {
   fukuoka_settime()
-}, 3500);
+}, 4000);
 
 
 function shizuoka_settime() {
@@ -327,6 +327,6 @@ function shizuoka_settime() {
 
 setTimeout(() => {
   shizuoka_settime()
-}, 5000);
+}, 5500);
 
 //.catch((error) => console.log(error));
